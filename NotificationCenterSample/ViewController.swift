@@ -12,9 +12,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        /// NotificationCenterを登録
+        NotificationCenter.default.addObserver(self, selector: #selector(doSomething(_:)), name: .notifyName, object: nil)
+    }
+    
+    @objc func doSomething(_ notification: NSNotification) {
+        print("通知を受け取りました")
     }
 
-
+}
+// Notification.Name拡張
+extension Notification.Name {
+    static let notifyName = Notification.Name("notifyName")
 }
 
